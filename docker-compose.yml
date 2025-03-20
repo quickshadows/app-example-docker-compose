@@ -11,7 +11,7 @@ services:
       - database
 
   database:
-    image: postgres:50
+    image: postgres:51
     container_name: database
     env_file:
       - .env_example

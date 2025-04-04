@@ -7,7 +7,7 @@ COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Копируем приложение
-COPY app.py .
+COPY app.py /opt/build/app.py
 
 # Запускаем приложение
 CMD ["python", "app.py"]

@@ -1,9 +1,13 @@
-FROM python:3.10-slim
+# Используем официальный образ Python
+FROM python:3.9-slim
 
-COPY . .
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential
+# Устанавливаем зависимости
+WORKDIR /app
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY requirements.txt .
-RUN pip instaall --no-cache-dir -r requirements.txt
-EXPOSE 8000
-CMD ["python", "/src/main.py"]
+# Копируем приложение
+COPY app.py .
+
+# Запускаем приложение
+CMD ["python", "app.py"]
